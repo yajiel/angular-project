@@ -9,10 +9,13 @@ import { FooterComponent } from "./footer/footer.component";
 import { LoginComponent } from "./login/login.component";
 import { NavComponent } from "./nav/nav.component";
 import { RegisterComponent } from "./register/register.component";
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
+  { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent }
+  { path: "register", component: RegisterComponent },
+  { path: "**", component: HomeComponent }
 ];
 
 @NgModule({
@@ -22,7 +25,8 @@ const appRoutes: Routes = [
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
