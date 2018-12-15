@@ -1,6 +1,21 @@
-<nav class="navbar navbar-right theme-color">
-  <a routerLink="/login" routerLinkActive="active" class="theme-color">Login</a>
-  <a routerLink="/register" routerLinkActive="active" class="theme-color"
-    >Register</a
-  >
+<nav class="navbar navbar-expand flex-column flex-md-row bg-primary">
+    <ul class="navbar-nav mr-auto flex-row">
+      <li class="nav-item active">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link text-light">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">Link1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="#">Link2</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav flex-row mb-md-0">
+      <li class="nav-item">
+        <a routerLink="/login" routerLinkActive="active" class="nav-link text-light" >Login</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/register" routerLinkActive="active" class="nav-link text-light">Register</a>
+      </li>
+    </ul>
 </nav>
