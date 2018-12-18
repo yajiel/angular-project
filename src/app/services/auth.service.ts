@@ -16,10 +16,26 @@ export class AuthService {
         console.log(response.json());
         let result = response.json();
         if (result && result.login) {
-          localStorage.setItem('user', result.user);
+          localStorage.setItem('user', JSON.stringify(result.user));
           return true;
         }
         return false;
       }));
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+  }
+
+  isLoggedIn() {
+    let user = localStorage.getItem('user');
+    if (!user) return false;
+    return true;
+  }
+  
+  getCurrentUser() {
+    let user = localStorage.getItem('user');
+    if (!user) return null;
+    return JSON.parse(user);
   }
 }
