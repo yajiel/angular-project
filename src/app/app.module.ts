@@ -1,7 +1,7 @@
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 
 import { fakeBackendProvider } from './helper/fake-backend';
@@ -36,6 +36,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
       // { enableTracing: true } // <-- debugging purposes only
