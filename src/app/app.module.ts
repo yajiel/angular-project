@@ -1,3 +1,4 @@
+import { LoginGuardService } from './services/login-guard.service';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -18,7 +19,9 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full"},
   { path: "home", component: HomeComponent },
-  { path: "login", component: LoginComponent },
+  { path: "login", 
+    component: LoginComponent,
+    canActivate: [LoginGuardService] },
   { path: "register", component: RegisterComponent },
   { path: "**", component: HomeComponent }
 ];
@@ -44,7 +47,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
-  
+    LoginGuardService,
   
     // For creating a mock back-end. You don't need these in a real app. 
     fakeBackendProvider,
