@@ -1,11 +1,12 @@
 <div class="container mt-5">
-  <h1 *ngIf="!authService.isLoggedIn()">
-    home works!
-  </h1>
-  
-  <h1 *ngIf="authService.isLoggedIn()">
-    Welcome 
-    <span class="text-primary">{{ authService.getCurrentUser().username }}</span>  
-  </h1>
+  <div class="support-frame">
+    <h1 *ngIf="!authService.isLoggedIn()">home works!</h1>
 
+    <h1 *ngIf="authService.isLoggedIn()">
+      Welcome
+      <span class="text-primary">{{
+        authService.getCurrentUser().username
+      }}</span>
+    </h1>
+  </div>
 </div>

@@ -1,3 +1,201 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <div class="row justify-content-center support-frame">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+      <h1 class="text-primary text-center">Register!</h1>
+      <br />
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input
+            type="text"
+            id="firstname"
+            class="form-control"
+            formControlName="firstname"
+            placeholder="First Name"
+            autofocus
+          />
+          <div
+            *ngIf="
+              registerForm.controls.firstname.touched &&
+              registerForm.controls.firstname.errors
+            "
+            class="alert alert-danger"
+          >
+            <span
+              class="help-block"
+              *ngIf="
+                registerForm.controls.firstname.errors.required &&
+                registerForm.controls.firstname.touched
+              "
+              >First name required</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastame">Last Name</label>
+          <input
+            type="text"
+            id="lastname"
+            class="form-control"
+            formControlName="lastname"
+            placeholder="Last Name"
+            autofocus
+          />
+          <div
+            *ngIf="
+              registerForm.controls.lastname.touched &&
+              registerForm.controls.lastname.errors
+            "
+            class="alert alert-danger"
+          >
+            <span
+              class="help-block"
+              *ngIf="
+                registerForm.controls.lastname.errors.required &&
+                registerForm.controls.lastname.touched
+              "
+              >Last name required</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="
+              registerForm.controls.password.errors &&
+              registerForm.controls.password.touched
+            "
+            class="alert alert-danger"
+          >
+            <p
+              *ngIf="
+                registerForm.controls.password.errors.required &&
+                registerForm.controls.password.touched
+              "
+            >
+              Password required
+            </p>
+            <p
+              *ngIf="
+                registerForm.controls.password.errors.minlength &&
+                registerForm.controls.password.touched
+              "
+            >
+              Password should be at least 6 letters long
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmpassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmpassword"
+            class="form-control"
+            formControlName="confirmpassword"
+            placeholder="Confirm Password"
+          />
+          <div
+            *ngIf="
+              registerForm.controls.confirmpassword.errors &&
+              registerForm.controls.confirmpassword.touched
+            "
+            class="alert alert-danger"
+          >
+            <p
+              *ngIf="
+                registerForm.controls.confirmpassword.errors.required &&
+                registerForm.controls.confirmpassword.touched
+              "
+            >
+              Please enter the password again
+            </p>
+            <p
+              *ngIf="
+                registerForm.controls.confirmpassword.errors &&
+                registerForm.controls.confirmpassword.touched
+              "
+            >
+              Password does not match
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="chinesename">Chinese Name</label>
+          <input
+            type="text"
+            id="chinesename"
+            class="form-control"
+            formControlName="chinesename"
+            placeholder="中文名字"
+            autofocus
+          />
+          <div
+            *ngIf="
+              registerForm.controls.chinesename.errors &&
+              registerForm.controls.chinesename.touched
+            "
+            class="alert alert-danger"
+          >
+            <span
+              *ngIf="
+                registerForm.controls.chinesename.errors.required &&
+                registerForm.controls.chinesename.touched
+              "
+              >Chinese name required</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email Address"
+          />
+          <div
+            *ngIf="
+              !registerForm.controls.email.valid &&
+              registerForm.controls.email.touched
+            "
+            class="alert alert-danger"
+          >
+            <span
+              *ngIf="
+                !registerForm.controls.email.valid &&
+                registerForm.get('email').touched
+              "
+              >Please enter a valid email</span
+            >
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="!registerForm.valid"
+        >
+          Register
+        </button>
+
+        <p class="small text-center text-gray-soft">
+          Already have an account?
+          <a routerLink="/login" routerLinkActive="active">Sign In</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
