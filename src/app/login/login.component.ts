@@ -5,7 +5,8 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormControl
+  FormControl,
+  AbstractControl
 } from "@angular/forms";
 
 @Component({
@@ -18,6 +19,9 @@ export class LoginComponent implements OnInit {
   errors: string;
   signinForm: FormGroup;
   submitted: boolean = false;
+  email: AbstractControl;
+  password: AbstractControl;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +47,8 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ])
     });
+    this.email = this.signinForm.controls.email;
+    this.password = this.signinForm.controls.password;
   }
 
   // f() {

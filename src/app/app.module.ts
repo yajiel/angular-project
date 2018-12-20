@@ -1,3 +1,4 @@
+import { LoginGuardService } from "./services/login-guard.service";
 import { AuthService } from "./services/auth.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -28,8 +29,9 @@ import { HomeComponent } from "./home/home.component";
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
     AuthService,
-
-    // For creating a mock back-end. You don't need these in a real app.
+    LoginGuardService,
+  
+    // For creating a mock back-end. You don't need these in a real app. 
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions

@@ -10,7 +10,7 @@ export class AuthService {
 
   login(credentials) {
     return this.http
-      .post("/api/authenticate", JSON.stringify(credentials))
+      .post("/login", JSON.stringify(credentials))
       .pipe(
         map(response => {
           console.log(response.json());

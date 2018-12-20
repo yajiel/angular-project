@@ -14,7 +14,7 @@ export function fakeBackendFactory(
   backend.connections.subscribe((connection: MockConnection) => {
     setTimeout(() => {
       if (
-        connection.request.url.endsWith("/api/authenticate") &&
+        connection.request.url.endsWith("/login") &&
         connection.request.method === RequestMethod.Post
       ) {
         let body = JSON.parse(connection.request.getBody());
