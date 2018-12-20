@@ -12,20 +12,16 @@
             class="form-control"
             formControlName="firstname"
             placeholder="First Name"
+            [ngClass]="{
+              notvalid: !registerForm.controls.firstname.valid && submitted
+            }"
             autofocus
           />
-          <div
-            *ngIf="
-              registerForm.controls.firstname.touched &&
-              registerForm.controls.firstname.errors
-            "
-            class="alert alert-danger"
-          >
+          <div *ngIf="!registerForm.controls.firstname.valid && submitted">
             <span
-              class="help-block"
+              class="help-block hint"
               *ngIf="
-                registerForm.controls.firstname.errors.required &&
-                registerForm.controls.firstname.touched
+                registerForm.controls.firstname.errors.required && submitted
               "
               >First name required</span
             >
@@ -40,20 +36,16 @@
             class="form-control"
             formControlName="lastname"
             placeholder="Last Name"
+            [ngClass]="{
+              notvalid: !registerForm.controls.firstname.valid && submitted
+            }"
             autofocus
           />
-          <div
-            *ngIf="
-              registerForm.controls.lastname.touched &&
-              registerForm.controls.lastname.errors
-            "
-            class="alert alert-danger"
-          >
+          <div *ngIf="!registerForm.controls.lastname.valid && submitted">
             <span
-              class="help-block"
+              class="help-block hint"
               *ngIf="
-                registerForm.controls.lastname.errors.required &&
-                registerForm.controls.lastname.touched
+                registerForm.controls.lastname.errors.required && submitted
               "
               >Last name required</span
             >
@@ -68,30 +60,29 @@
             class="form-control"
             formControlName="password"
             placeholder="Password"
+            [ngClass]="{
+              notvalid: !registerForm.controls.firstname.valid && submitted
+            }"
+            autofocus
           />
-          <div
-            *ngIf="
-              registerForm.controls.password.errors &&
-              registerForm.controls.password.touched
-            "
-            class="alert alert-danger"
-          >
-            <p
+
+          <div *ngIf="!registerForm.controls.password.valid && submitted">
+            <span
+              class="help-block hint"
               *ngIf="
-                registerForm.controls.password.errors.required &&
-                registerForm.controls.password.touched
+                registerForm.controls.password.errors.required && submitted
               "
             >
               Password required
-            </p>
-            <p
+            </span>
+            <span
+              class="help-block hint"
               *ngIf="
-                registerForm.controls.password.errors.minlength &&
-                registerForm.controls.password.touched
+                registerForm.controls.password.errors.minlength && submitted
               "
             >
               Password should be at least 6 letters long
-            </p>
+            </span>
           </div>
         </div>
 
@@ -103,30 +94,33 @@
             class="form-control"
             formControlName="confirmpassword"
             placeholder="Confirm Password"
+            [ngClass]="{
+              notvalid:
+                !registerForm.controls.confirmpassword.valid && submitted
+            }"
+            autofocus
           />
           <div
-            *ngIf="
-              registerForm.controls.confirmpassword.errors &&
-              registerForm.controls.confirmpassword.touched
-            "
-            class="alert alert-danger"
+            *ngIf="!registerForm.controls.confirmpassword.valid && submitted"
           >
-            <p
+            <span
+              class="help-block hint"
               *ngIf="
                 registerForm.controls.confirmpassword.errors.required &&
-                registerForm.controls.confirmpassword.touched
+                submitted
               "
             >
-              Please enter the password again
-            </p>
-            <p
+              Confirm password required
+            </span>
+            <span
+              class="help-block hint"
               *ngIf="
-                registerForm.controls.confirmpassword.errors &&
-                registerForm.controls.confirmpassword.touched
+                registerForm.controls.confirmpassword.errors.passwordnotmatch &&
+                submitted
               "
             >
               Password does not match
-            </p>
+            </span>
           </div>
         </div>
 
@@ -138,22 +132,19 @@
             class="form-control"
             formControlName="chinesename"
             placeholder="中文名字"
+            [ngClass]="{
+              notvalid: !registerForm.controls.firstname.valid && submitted
+            }"
             autofocus
           />
-          <div
-            *ngIf="
-              registerForm.controls.chinesename.errors &&
-              registerForm.controls.chinesename.touched
-            "
-            class="alert alert-danger"
-          >
+          <div *ngIf="!registerForm.controls.chinesename.valid && submitted">
             <span
+              class="help-block hint"
               *ngIf="
-                registerForm.controls.chinesename.errors.required &&
-                registerForm.controls.chinesename.touched
+                registerForm.controls.chinesename.errors.required && submitted
               "
-              >Chinese name required</span
-            >
+              >Chinese name required
+            </span>
           </div>
         </div>
 
@@ -165,29 +156,21 @@
             class="form-control"
             formControlName="email"
             placeholder="Email Address"
+            [ngClass]="{
+              notvalid: !registerForm.controls.firstname.valid && submitted
+            }"
+            autofocus
           />
-          <div
-            *ngIf="
-              !registerForm.controls.email.valid &&
-              registerForm.controls.email.touched
-            "
-            class="alert alert-danger"
-          >
+          <div *ngIf="!registerForm.controls.email.valid && submitted">
             <span
-              *ngIf="
-                !registerForm.controls.email.valid &&
-                registerForm.get('email').touched
-              "
+              class="help-block hint"
+              *ngIf="!registerForm.controls.email.valid && submitted"
               >Please enter a valid email</span
             >
           </div>
         </div>
 
-        <button
-          type="submit"
-          class="btn btn-primary btn-block"
-          [disabled]="!registerForm.valid"
-        >
+        <button type="submit" class="btn btn-primary btn-block">
           Register
         </button>
 
