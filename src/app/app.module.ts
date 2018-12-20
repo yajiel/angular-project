@@ -2,7 +2,6 @@ import { AuthService } from "./services/auth.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterModule, Routes } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { fakeBackendProvider } from "./helper/fake-backend";
