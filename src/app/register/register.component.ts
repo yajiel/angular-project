@@ -5,8 +5,9 @@ import {
   FormBuilder,
   FormControl,
   Validators,
-  FormArray
+  AbstractControl
 } from "@angular/forms";
+import { CustomValidators } from "./custom-validators";
 
 @Component({
   selector: "app-register",
@@ -20,22 +21,29 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstname: ["", Validators.required],
-      lastname: ["", Validators.required],
-      password: ["", [Validators.required, Validators.minLength(6)]],
-      confirmpassword: ["", Validators.required],
-      chinesename: ["", Validators.required],
-      email: ["", [Validators.required, Validators.email]]
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        firstname: ["", Validators.required],
+        lastname: ["", Validators.required],
+        password: ["", [Validators.required, Validators.minLength(6)]],
+        confirmpassword: ["", Validators.required],
+        chinesename: ["", Validators.required],
+        email: ["", [Validators.required, Validators.email]]
+      },
+      {
+        validator: CustomValidators.matchPassword.bind(this)
+      }
+    );
   }
 
   onRegister() {
     this.submitted = true;
+    /*
     if (this.registerForm.invalid) {
       return;
     }
+    */
 
-    // console.log(this.registerForm);
+    console.log(this.registerForm);
   }
 }
