@@ -46,6 +46,55 @@ export function fakeBackendFactory(
           );
         }
       }
+
+      if (
+        connection.request.url.endsWith("/forgetpwd") &&
+        connection.request.method === RequestMethod.Post
+      ) {
+        let body = JSON.parse(connection.request.getBody());
+        // console.log(body);
+        if (body.email === 'mxiaoai@domain.com') {
+          connection.mockRespond(
+            new Response(
+              new ResponseOptions({
+                status: 200,
+                body: {
+                  exist: true,
+                  user: { username: "mxiaoai", email: "mxiaoai@domain.com" }
+                }
+              })
+            )
+          );
+        } else {
+          connection.mockRespond(
+            new Response(
+              new ResponseOptions({
+                status: 200,
+                body: {
+                  exist: false
+                }
+              })
+            )
+          );
+        }
+      }
+    
+    if (
+      connection.request.url.endsWith("/resetpwd") &&
+      connection.request.method === RequestMethod.Post
+    ) {
+      connection.mockRespond(
+        new Response(
+          new ResponseOptions({
+            status: 200,
+            body: {
+              res: true
+            }
+          })
+        )
+      );
+    }
+
     }, 1000);
   });
 

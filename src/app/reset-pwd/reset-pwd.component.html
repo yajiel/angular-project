@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row justify-content-center support-frame">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+      <div *ngIf="invalidReset" class="alert alert-danger text-center">
+        Invalid Reset.
+      </div>
+      <h2 class="text-primary text-center">Reset your password</h2>
+      <form class="mt-5" [formGroup]="resetForm" (ngSubmit)="reset()">
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text"
+              disabled
+              class="form-control"
+              placeholder="{{ emailStr }}">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password"
+          [ngClass]="{
+            'is-invalid': submitted && password.errors
+          }">
+        <div *ngIf="submitted && password.errors">
+          <small *ngIf="submitted && password.errors.required">
+            Password Required
+          </small>
+          <small *ngIf="submitted && password.errors.minlength">
+            Password no less than 6 letters long
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          formControlName="confirmPassword"
+          placeholder="Password"
+          [ngClass]="{
+            'is-invalid': submitted && confirmPassword.errors
+          }">
+        <div *ngIf="submitted && confirmPassword.errors">
+          <small *ngIf="submitted && confirmPassword.errors.required">
+            Password Required
+          </small>
+          <small *ngIf="submitted && confirmPassword.errors.passwordnotmatch">
+            Confirm Password not same as password
+          </small>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block">Reset Password</button>
+    </form>
+
+  </div>
+</div>

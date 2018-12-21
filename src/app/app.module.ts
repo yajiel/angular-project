@@ -1,3 +1,4 @@
+import { UserDataService } from './services/user-data.service';
 import { LoginGuardService } from "./services/login-guard.service";
 import { AuthService } from "./services/auth.service";
 import { BrowserModule } from "@angular/platform-browser";
@@ -15,6 +16,8 @@ import { LoginComponent } from "./login/login.component";
 import { NavComponent } from "./nav/nav.component";
 import { RegisterComponent } from "./register/register.component";
 import { HomeComponent } from "./home/home.component";
+import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
+import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,15 @@ import { HomeComponent } from "./home/home.component";
     LoginComponent,
     RegisterComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    ResetPwdComponent,
+    ForgetPwdComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
     AuthService,
     LoginGuardService,
+    UserDataService,
   
     // For creating a mock back-end. You don't need these in a real app. 
     fakeBackendProvider,
